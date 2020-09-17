@@ -4,3 +4,6 @@ Mackerelから以下の情報を取得し、標準出力する
 - IPv4
 - OS
 - メモリ
+
+## License
+MIT
