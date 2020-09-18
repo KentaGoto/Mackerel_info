@@ -1,9 +1,11 @@
 # Mackerel_info 
-Mackerelから以下の情報を取得し、標準出力する  
-- ホスト名
+
+## Description  
+Obtain the following information from Mackerel and output it to standard output.   
+- Host name
 - IPv4
 - OS
-- メモリ
+- Memory
 
 ## License
 MIT
