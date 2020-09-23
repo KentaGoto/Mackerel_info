@@ -9,3 +9,6 @@ Obtain the following information from Mackerel and output it to standard output.
 
 ## License
 MIT
+
+## Author  
+Kenta Goto
