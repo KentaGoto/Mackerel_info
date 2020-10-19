@@ -8,23 +8,23 @@ use Win32::Console::ANSI;
 
 #$Term::ANSIColor::AUTORESET = 1;
 
-# WebService::Mackerelのインスタンス
+# instance
 my $mkr = WebService::Mackerel->new(
     api_key      => '<API_KEY>',
     service_name => '<SERVICE_NAME>',
 );
 
-# ホスト名一覧取得
+# Get a list of host names
 my $response = decode_json( $mkr->get_hosts );
 my $hosts    = $response->{hosts};
 
 #print Dumper $hosts;
 #exit;
 
-# ホスト名出力
+# Host name output
 for my $host ( @{$hosts} ) {
 
-    # ホスト名
+    # Hostname
     my $host_name = $host->{name};
     print 'HostName: ' . BOLD GREEN, $host_name . "\n" . RESET;
 
@@ -34,10 +34,10 @@ for my $host ( @{$hosts} ) {
     if ( defined $ip ) {
         print $ip . "\n";
     }
-    elsif ( not defined $ip and defined $host_name ) { # MackerelでIPアドレスが取れない場合は、コマンド叩いてIPアドレスをゲットする
+    elsif ( not defined $ip and defined $host_name ) { # If you can't get an IP address on Mackerel, hit the command to get the IP address.
 		my @ipconfig = `ping $host_name`;
 		for my $l (@ipconfig){
-			# IPにマッチしたら抜ける
+			# If it matches the IP,
 			if ($l =~ /((?:[0-9]{1,3})\.(?:[0-9]{1,3})\.(?:[0-9]{1,3})\.(?:[0-9]{1,3}))/){
 				$ip = $1;
 				next;
@@ -65,10 +65,10 @@ for my $host ( @{$hosts} ) {
     my $total_memory = $host->{meta}->{memory}->{total};
     $free_memory  =~ s{kb}{}i;
     $total_memory =~ s{kb}{}i;
-    $free_memory  = $free_memory / 1024; # KB to MB
+    $free_memory  = $free_memory / 1024;  # KB to MB
     $total_memory = $total_memory / 1024; # KB to MB
-    print 'Free memory: ' . $free_memory . 'MB' . "\n";  # メモリ空き容量
-    print 'Total memory: ' . $total_memory . 'MB' . "\n"; # メモリ空き容量
+    print 'Free memory: ' . $free_memory . 'MB' . "\n";   # memory free space
+    print 'Total memory: ' . $total_memory . 'MB' . "\n"; # memory free space
     print "\n";
 }
 
