@@ -60,7 +60,7 @@ for my $host ( @{$hosts} ) {
         print "\n";
     }
 
-    # メモリ
+    # Memory
     my $free_memory  = $host->{meta}->{memory}->{free};
     my $total_memory = $host->{meta}->{memory}->{total};
     $free_memory  =~ s{kb}{}i;
