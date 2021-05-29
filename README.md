@@ -7,6 +7,9 @@ Obtain the following information from Mackerel and output it to standard output.
 - OS
 - Memory
 
+## Requires
+- Perl5
+
 ## License
 MIT
 
